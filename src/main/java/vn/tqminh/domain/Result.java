@@ -1,8 +1,6 @@
 package vn.tqminh.domain;
 
-import java.util.List;
 import java.util.Map;
-
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -15,7 +13,7 @@ public class Result {
 	private boolean timeOut;
 	
 	@JsonProperty("hits")
-	private Map<String, List<Hit>> hits;
+	private Map<String, Object> hits;
 
 	public int getTook() {
 		return took;
@@ -33,11 +31,12 @@ public class Result {
 		this.timeOut = timeOut;
 	}
 
-	public Map<String, List<Hit>> getHits() {
+	public Map<String, Object> getHits() {
 		return hits;
 	}
 
-	public void setHits(Map<String, List<Hit>> hits) {
+	public void setHits(Map<String, Object> hits) {
 		this.hits = hits;
 	}
+
 }

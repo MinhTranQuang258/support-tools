@@ -46,13 +46,11 @@ public class TestController {
 		headers.setAccept(Arrays.asList(new MediaType[] { MediaType.APPLICATION_JSON }));
 		headers.setContentType(MediaType.APPLICATION_JSON);
 //		headers.set("my_other_key", "my_other_value");
-		
 		HttpEntity<String> entity = new HttpEntity<>(body, headers);
-		
-		
 		ResponseEntity<String> response = restTemplate.postForEntity(url, entity, String.class);
 		String result= response.getBody();
 		
+
 		Result result2= objectMapper.readValue(result, Result.class);
 		Object object= result2.getHits();
 		
