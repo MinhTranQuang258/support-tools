@@ -3,6 +3,7 @@ package vn.tqminh.controller;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -32,6 +32,7 @@ public class TestController {
 	
 	private String url= "http://localhost:9200/customer/_search";
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/test")
 	public void test() throws JsonParseException, JsonMappingException, IOException {
 		String body="{\r\n" + 
@@ -53,7 +54,13 @@ public class TestController {
 		String result= response.getBody();
 		
 		Result result2= objectMapper.readValue(result, Result.class);
-		System.out.println(result2.getHits());
+		Object object= result2.getHits();
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map = objectMapper.convertValue(object, Map.class);
+		List<?> list= (List<?>) map.get("hits");
+		System.err.println(list.size());
+		
 	}
 	
 }

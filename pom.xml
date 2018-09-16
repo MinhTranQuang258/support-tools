@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>vn.tqminh</groupId>
-	<artifactId>stuty-rest-teamplate</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>support-tools</artifactId>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>stuty-rest-teamplate</name>
