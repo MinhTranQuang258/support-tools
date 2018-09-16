@@ -54,13 +54,11 @@ public class TestController {
 		Result result2= objectMapper.readValue(result, Result.class);
 		Object object= result2.getHits();
 		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map = objectMapper.convertValue(object, Map.class);
+		Map<String, Object> map = objectMapper.convertValue(object, Map.class);
 		List<Object> list= (List<Object>) map.get("hits");
 		Object object2= list.get(0);
-		Map<String, Object> map1 = new HashMap<String, Object>();
-		map1 = objectMapper.convertValue(object2, Map.class);
-		System.out.println(map1.get("_source"));
+		Map<String, Object> map1 = objectMapper.convertValue(object2, Map.class);
+		
 	}
 	
 }
