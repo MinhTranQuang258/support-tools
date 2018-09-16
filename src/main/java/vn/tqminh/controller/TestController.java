@@ -56,9 +56,11 @@ public class TestController {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map = objectMapper.convertValue(object, Map.class);
-		List<?> list= (List<?>) map.get("hits");
-		System.err.println(list.size());
-		
+		List<Object> list= (List<Object>) map.get("hits");
+		Object object2= list.get(0);
+		Map<String, Object> map1 = new HashMap<String, Object>();
+		map1 = objectMapper.convertValue(object2, Map.class);
+		System.out.println(map1.get("_source"));
 	}
 	
 }
